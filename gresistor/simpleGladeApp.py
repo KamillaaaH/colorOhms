@@ -58,6 +58,10 @@ def bindtextdomain(app_name, locale_dir=None):
 
 class SimpleGladeApp:
 
+    #self, path="gresistor.glade",
+    #root="gResistor",
+    #domain=app_name, ** kwargs
+
     def __init__(self, path, root=None, domain=None, **kwargs):
         """
         Load a glade file specified by glade_filename, using root as
@@ -252,7 +256,7 @@ class SimpleGladeApp:
         """
         widget.destroy()
 
-    def gtk_window_activate_default(self, window, *args):
+    def gtk_window_activate_default(self, widget, *args):
         """
         Predefined callback.
         The default widget of the window is activated.
