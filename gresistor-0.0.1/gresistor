@@ -51,11 +51,11 @@ class Gresistor(SimpleGladeApp):
         meas_unity = self.set_meas_unity(v4)
 
         #set value for register
-        value = set_type_of_register(v1, v2, multiply, meas_unity, tolerance, temperature)
+        value = set_type_of_register(v1, v2, v3,  multiply, meas_unity, tolerance, temperature, type_of_register)
 
 
 
-    def set_type_of_register(v1, v2, multiply, meas_unity, tolerance, temperature):
+    def set_type_of_register(self, v1, v2, v3, multiply, meas_unity, tolerance, temperature, type_of_register):
         if (type_of_register==0):
             if (v1==0):
                 v1=''
@@ -75,9 +75,9 @@ class Gresistor(SimpleGladeApp):
                 v1=''
             value=str(v1)+str(v2)+str(v3)+multiply+meas_unity+' ± '+tolerance+' '+temperature
 
-        return vaue
+        return value
 
-    def set_meas_unity(v4):
+    def set_meas_unity(self, v4):
         if (v4==0):
             meas_unity=" Ω"
 
@@ -106,7 +106,7 @@ class Gresistor(SimpleGladeApp):
         return meas_unity
 
 
-    def set_multiply(v4):
+    def set_multiply(self, v4):
         if (v4==0):
             multiply=''
 
@@ -133,7 +133,7 @@ class Gresistor(SimpleGladeApp):
 
         return multiply
             
-    def set_temperature(v6):
+    def set_temperature(self, v6):
         if (v6==0):
             temperature=''
         elif (v6==1):
@@ -147,7 +147,7 @@ class Gresistor(SimpleGladeApp):
         
         return temperature
 
-    def set_tolerances(v5):
+    def set_tolerances(self, v5):
         if (v5==0):
             tolerance='20%'
         elif (v5==1):
