@@ -15,19 +15,27 @@ except:
 
 class colorohmsGUI:
 
-    def init_multiple(self):
+    def init_combobox(self, objname, values):
+        """
+        inicia combobox, incluindo suas opções
+        objname -- nome do objeto
+        values  -- lista de opções
+        """
+        # @FIXME testar parâmetros e entender essa sobrescrita de instâncias
         self.liststore = gtk.ListStore(int,str)
-        self.liststore.append([0,"selecione"])
-        self.liststore.append([1,"Ω"])
-        self.liststore.append([2,"kΩ"])
-        self.liststore.append([3,"MΩ"])
-        
-        self.combobox = self.builder.get_object('multiple')
+        for i in range(len(values)):
+            self.liststore.append([i, values[i]])
+        self.combobox = self.builder.get_object(objname)
         self.combobox.set_model(self.liststore)
         self.cell = gtk.CellRendererText()
         self.combobox.pack_start(self.cell, True)
         self.combobox.add_attribute(self.cell, 'text', 1)
         self.combobox.set_active(0)
+
+    def init_objects(self):
+        
+        # inicia combobox "multiple" (múltiplo de ohm)
+        self.init_combobox("multiple", ["Ω", "kΩ", "MΩ"])
 
     def __init__(self):
         self.builder = gtk.Builder()
@@ -36,7 +44,7 @@ class colorohmsGUI:
         if self.window:
             self.window.connect("destroy", gtk.main_quit)        
         self.builder.connect_signals(self)
-        self.init_multiple()
+        self.init_objects()
 
 app = colorohmsGUI()
 gtk.main()
