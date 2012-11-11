@@ -23,8 +23,8 @@ class colorohmsGUI:
         """
         # @FIXME testar parâmetros e entender essa sobrescrita de instâncias
         self.liststore = gtk.ListStore(int,str)
-        for i in range(len(values)):
-            self.liststore.append([i, values[i]])
+        for i, value in enumerate(values):
+            self.liststore.append([i, value])
         self.combobox = self.builder.get_object(objname)
         self.combobox.set_model(self.liststore)
         self.cell = gtk.CellRendererText()
