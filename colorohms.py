@@ -32,10 +32,11 @@ class colorohmsGUI:
         self.combobox.add_attribute(self.cell, 'text', 1)
         self.combobox.set_active(0)
 
-    def init_objects(self):
-        
+    def init_objects(self):        
         # inicia combobox "multiple" (múltiplo de ohm)
         self.init_combobox("multiple", ["Ω", "kΩ", "MΩ"])
+        # inicia combobox "qtbands"  (quantidade de listras)
+        self.init_combobox("qtbands",  ["4 bands", "5 bands", "6 bands"])
 
     def __init__(self):
         self.builder = gtk.Builder()
