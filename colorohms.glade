@@ -210,7 +210,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkComboBoxText" id="band_combobox">
+              <object class="GtkComboBoxText" id="restype">
                 <property name="width_request">118</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>

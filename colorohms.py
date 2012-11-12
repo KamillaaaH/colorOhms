@@ -35,13 +35,13 @@ class colorohmsGUI:
     def init_objects(self):        
         # inicia combobox "multiple" (múltiplo de ohm)
         self.init_combobox("multiple", ["Ω", "kΩ", "MΩ"])
-        # inicia combobox "qtbands"  (quantidade de listras)
-        self.init_combobox("qtbands",  ["4 bands", "5 bands", "6 bands"])
+        # inicia combobox "restype"  (tipo de resistor/qtde listras)
+#        self.init_combobox("restype",  ["4 bands", "5 bands", "6 bands"])
 
     def __init__(self):
         self.builder = gtk.Builder()
         self.builder.add_from_file("colorohms.glade")
-        self.window = self.builder.get_object ("main")
+        self.window = self.builder.get_object ("colorohms")
         if self.window:
             self.window.connect("destroy", gtk.main_quit)        
         self.builder.connect_signals(self)
