@@ -16,16 +16,28 @@ except:
 
 class ResistorUI:
 
-    def __init__(self):
+    def __init__(self):    	
         self.builder = gtk.Builder()
-        self.builder.add_from_file("resistor.glade")
-        self.window = self.builder.get_object("main")
+        try:
+        	self.builder.add_from_file("colorOhms2.glade")
+        except:
+        	print "Can't load glade file"
+        	
+        try:
+        	self.window = self.builder.get_object("main")
+        except:
+        	print "Can't load main window"
+        	
         if self.window:
             self.window.connect("destroy", gtk.main_quit)
+        
         self.builder.connect_signals(self)
         
-        self.drawingarea1 = self.builder.get_object("drawingarea1")
-
+        try:
+        	self.drawingarea1 = self.builder.get_object("resistorArea")
+        except:
+        	print "Can't load resistorArea"
+        	
         print type(self.drawingarea1)
 
         # Definições de cores
