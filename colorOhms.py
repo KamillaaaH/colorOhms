@@ -33,13 +33,7 @@ class ResistorUI:
         
         self.builder.connect_signals(self)
         
-        self.drawingarea1 = self.builder.get_object("resistorArea")
-        
-        if (not self.drawingarea1 is gtk.gdk.Drawable):
-        	print "Can't load resistorArea"
-        	sys.exit(1)
-    	else:
-    	    self.drawingarea1 = self.drawingarea1.window
+        self.drawingarea1 = self.builder.get_object("resistorArea").window
         	
         print type(self.drawingarea1)
 
@@ -62,7 +56,7 @@ class ResistorUI:
         self.bg_gc6.set_rgb_fg_color(gtk.gdk.color_parse('Green'))
 
     # desenha o resistor dentro de drawingarea1
-    def on_drawingarea1_expose_event(self, widget, * args):
+    def on_resistorArea_expose_event(self, widget, * args):
         width, height = self.drawingarea1.get_size()
         x = y = 250/4
         w = (width-300) / 2
