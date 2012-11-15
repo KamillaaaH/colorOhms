@@ -17,6 +17,7 @@ except:
 class ResistorUI:
 
     def __init__(self):
+        
         self.builder = gtk.Builder()
         self.builder.add_from_file("resistor.glade")
         self.window = self.builder.get_object("main")
@@ -29,20 +30,20 @@ class ResistorUI:
         # Definições de cores
         self.fg_gc  = gtk.gdk.GC(self.drawingarea1.window)
         self.bg_gc  = gtk.gdk.GC(self.drawingarea1.window)
-        self.bg_gc1 = gtk.gdk.GC(self.drawingarea1.window)
-        self.bg_gc2 = gtk.gdk.GC(self.drawingarea1.window)
-        self.bg_gc3 = gtk.gdk.GC(self.drawingarea1.window)
-        self.bg_gc4 = gtk.gdk.GC(self.drawingarea1.window)
-        self.bg_gc5 = gtk.gdk.GC(self.drawingarea1.window)
-        self.bg_gc6 = gtk.gdk.GC(self.drawingarea1.window)
+        self.listra1 = gtk.gdk.GC(self.drawingarea1.window)
+        self.listra2 = gtk.gdk.GC(self.drawingarea1.window)
+        self.listra3 = gtk.gdk.GC(self.drawingarea1.window)
+        self.listra4 = gtk.gdk.GC(self.drawingarea1.window)
+        self.listra5 = gtk.gdk.GC(self.drawingarea1.window)
+        self.listra6 = gtk.gdk.GC(self.drawingarea1.window)
         self.bg_gc.set_rgb_fg_color(gtk.gdk.color_parse('#BD987F'))
         self.fg_gc.set_rgb_fg_color(gtk.gdk.color_parse('black'))
-        self.bg_gc1.set_rgb_fg_color(gtk.gdk.color_parse('Black'))
-        self.bg_gc2.set_rgb_fg_color(gtk.gdk.color_parse('Red'))
-        self.bg_gc3.set_rgb_fg_color(gtk.gdk.color_parse('Brown'))
-        self.bg_gc4.set_rgb_fg_color(gtk.gdk.color_parse('Orange'))
-        self.bg_gc5.set_rgb_fg_color(gtk.gdk.color_parse('Blue'))
-        self.bg_gc6.set_rgb_fg_color(gtk.gdk.color_parse('Green'))
+        self.listra1.set_rgb_fg_color(gtk.gdk.color_parse('Black'))
+        self.listra2.set_rgb_fg_color(gtk.gdk.color_parse('Red'))
+        self.listra3.set_rgb_fg_color(gtk.gdk.color_parse('Brown'))
+        self.listra4.set_rgb_fg_color(gtk.gdk.color_parse('Orange'))
+        self.listra5.set_rgb_fg_color(gtk.gdk.color_parse('Blue'))
+        self.listra6.set_rgb_fg_color(gtk.gdk.color_parse('Green'))
 
     # desenha o resistor dentro de drawingarea1
     def on_drawingarea1_expose_event(self, widget, * args):
@@ -71,17 +72,17 @@ class ResistorUI:
         # meio - preenchimento
         self.drawingarea1.window.draw_rectangle(self.bg_gc,  True,  w+97,  83, 100, 49)
         # 1a listra
-        self.drawingarea1.window.draw_rectangle(self.bg_gc1, True,  w+63,  67, 10, 83)
+        self.drawingarea1.window.draw_rectangle(self.listra1, True,  w+63,  67, 10, 83)
         # 2a listra
-        self.drawingarea1.window.draw_rectangle(self.bg_gc2, True,  w+110, 83, 10, 49)
+        self.drawingarea1.window.draw_rectangle(self.listra2, True,  w+110, 83, 10, 49)
         # 3a listra
-        self.drawingarea1.window.draw_rectangle(self.bg_gc3, True,  w+130, 83, 10, 49)
+        self.drawingarea1.window.draw_rectangle(self.listra3, True,  w+130, 83, 10, 49)
         # 4a listra
-        self.drawingarea1.window.draw_rectangle(self.bg_gc4, True,  w+150, 83, 10, 49)
+        self.drawingarea1.window.draw_rectangle(self.listra4, True,  w+150, 83, 10, 49)
         # 5a listra
-        self.drawingarea1.window.draw_rectangle(self.bg_gc5, True,  w+170, 83, 10, 49)
+        self.drawingarea1.window.draw_rectangle(self.listra5, True,  w+170, 83, 10, 49)
         # 6a listra
-        self.drawingarea1.window.draw_rectangle(self.bg_gc6, True,  w+215, 67, 10, 83)
+        self.drawingarea1.window.draw_rectangle(self.listra6, True,  w+215, 67, 10, 83)
 
 ResistorUI()
 gtk.main()
