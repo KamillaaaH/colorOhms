@@ -33,10 +33,13 @@ class ResistorUI:
         
         self.builder.connect_signals(self)
         
-        try:
-        	self.drawingarea1 = self.builder.get_object("resistorArea").window
-        except:
+        self.drawingarea1 = self.builder.get_object("resistorArea")
+        
+        if (not self.drawingarea1 is gtk.gdk.Drawable):
         	print "Can't load resistorArea"
+        	sys.exit(1)
+    	else:
+    	    self.drawingarea1 = self.drawingarea1.window
         	
         print type(self.drawingarea1)
 
