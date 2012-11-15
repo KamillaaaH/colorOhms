@@ -34,21 +34,21 @@ class ResistorUI:
         self.builder.connect_signals(self)
         
         try:
-        	self.drawingarea1 = self.builder.get_object("resistorArea")
+        	self.drawingarea1 = self.builder.get_object("resistorArea").window
         except:
         	print "Can't load resistorArea"
         	
         print type(self.drawingarea1)
 
         # Definições de cores
-        self.fg_gc  = gtk.gdk.GC(self.drawingarea1.window)
-        self.bg_gc  = gtk.gdk.GC(self.drawingarea1.window)
-        self.bg_gc1 = gtk.gdk.GC(self.drawingarea1.window)
-        self.bg_gc2 = gtk.gdk.GC(self.drawingarea1.window)
-        self.bg_gc3 = gtk.gdk.GC(self.drawingarea1.window)
-        self.bg_gc4 = gtk.gdk.GC(self.drawingarea1.window)
-        self.bg_gc5 = gtk.gdk.GC(self.drawingarea1.window)
-        self.bg_gc6 = gtk.gdk.GC(self.drawingarea1.window)
+        self.fg_gc  = gtk.gdk.GC(self.drawingarea1)
+        self.bg_gc  = gtk.gdk.GC(self.drawingarea1)
+        self.bg_gc1 = gtk.gdk.GC(self.drawingarea1)
+        self.bg_gc2 = gtk.gdk.GC(self.drawingarea1)
+        self.bg_gc3 = gtk.gdk.GC(self.drawingarea1)
+        self.bg_gc4 = gtk.gdk.GC(self.drawingarea1)
+        self.bg_gc5 = gtk.gdk.GC(self.drawingarea1)
+        self.bg_gc6 = gtk.gdk.GC(self.drawingarea1)
         self.bg_gc.set_rgb_fg_color(gtk.gdk.color_parse('#BD987F'))
         self.fg_gc.set_rgb_fg_color(gtk.gdk.color_parse('black'))
         self.bg_gc1.set_rgb_fg_color(gtk.gdk.color_parse('Black'))
@@ -60,42 +60,42 @@ class ResistorUI:
 
     # desenha o resistor dentro de drawingarea1
     def on_drawingarea1_expose_event(self, widget, * args):
-        width, height = self.drawingarea1.window.get_size()
+        width, height = self.drawingarea1.get_size()
         x = y = 250/4
         w = (width-300) / 2
         h = 250/2
         # terminal esquerdo
-        self.drawingarea1.window.draw_line(self.fg_gc, w+20, 107, w+40, 107)
-        self.drawingarea1.window.draw_line(self.fg_gc, w+20, 107, w+20, 200)
+        self.drawingarea1.draw_line(self.fg_gc, w+20, 107, w+40, 107)
+        self.drawingarea1.draw_line(self.fg_gc, w+20, 107, w+20, 200)
         # terminal direito
-        self.drawingarea1.window.draw_line(self.fg_gc, w+258, 107, w+278, 107)
-        self.drawingarea1.window.draw_line(self.fg_gc, w+278, 107, w+278, 200)
+        self.drawingarea1.draw_line(self.fg_gc, w+258, 107, w+278, 107)
+        self.drawingarea1.draw_line(self.fg_gc, w+278, 107, w+278, 200)
 
         # ponta esquerda - borda
-        self.drawingarea1.window.draw_arc(self.fg_gc, True, w+35, 65, 68, 85, 360, 360*64)
+        self.drawingarea1.draw_arc(self.fg_gc, True, w+35, 65, 68, 85, 360, 360*64)
         # ponta esquerda - preenchimento
-        self.drawingarea1.window.draw_arc(self.bg_gc, True, w+36, 66, 66, 83, 360, 360*64)
+        self.drawingarea1.draw_arc(self.bg_gc, True, w+36, 66, 66, 83, 360, 360*64)
         # ponta direita - borda
-        self.drawingarea1.window.draw_arc(self.fg_gc, True, w+190, 65, 68, 85, 360, 360*64)
+        self.drawingarea1.draw_arc(self.fg_gc, True, w+190, 65, 68, 85, 360, 360*64)
         # ponta direita - preenchimento
-        self.drawingarea1.window.draw_arc(self.bg_gc, True, w+191, 66, 66, 83, 360, 360*64)
+        self.drawingarea1.draw_arc(self.bg_gc, True, w+191, 66, 66, 83, 360, 360*64)
 
         # meio - borda
-        self.drawingarea1.window.draw_rectangle(self.fg_gc,  False, w+97,  82, 99, 50)
+        self.drawingarea1.draw_rectangle(self.fg_gc,  False, w+97,  82, 99, 50)
         # meio - preenchimento
-        self.drawingarea1.window.draw_rectangle(self.bg_gc,  True,  w+97,  83, 100, 49)
+        self.drawingarea1.draw_rectangle(self.bg_gc,  True,  w+97,  83, 100, 49)
         # 1a listra
-        self.drawingarea1.window.draw_rectangle(self.bg_gc1, True,  w+63,  67, 10, 83)
+        self.drawingarea1.draw_rectangle(self.bg_gc1, True,  w+63,  67, 10, 83)
         # 2a listra
-        self.drawingarea1.window.draw_rectangle(self.bg_gc2, True,  w+110, 83, 10, 49)
+        self.drawingarea1.draw_rectangle(self.bg_gc2, True,  w+110, 83, 10, 49)
         # 3a listra
-        self.drawingarea1.window.draw_rectangle(self.bg_gc3, True,  w+130, 83, 10, 49)
+        self.drawingarea1.draw_rectangle(self.bg_gc3, True,  w+130, 83, 10, 49)
         # 4a listra
-        self.drawingarea1.window.draw_rectangle(self.bg_gc4, True,  w+150, 83, 10, 49)
+        self.drawingarea1.draw_rectangle(self.bg_gc4, True,  w+150, 83, 10, 49)
         # 5a listra
-        self.drawingarea1.window.draw_rectangle(self.bg_gc5, True,  w+170, 83, 10, 49)
+        self.drawingarea1.draw_rectangle(self.bg_gc5, True,  w+170, 83, 10, 49)
         # 6a listra
-        self.drawingarea1.window.draw_rectangle(self.bg_gc6, True,  w+215, 67, 10, 83)
+        self.drawingarea1.draw_rectangle(self.bg_gc6, True,  w+215, 67, 10, 83)
 
 if __name__ == "__main__":
 	ResistorUI()
